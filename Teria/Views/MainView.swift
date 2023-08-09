@@ -5,11 +5,13 @@ struct MainView: View {
     @State var selected: Gradient = Gradient(colors: [Color(red: 255 / 255, green: 146 / 255, blue: 140 / 255), Color(red: 10 / 255, green: 132 / 255, blue: 255 / 255)])
     @State var unselected: Gradient = Gradient(colors: [Color(red: 255 / 255, green: 196 / 255, blue: 190 / 255), Color(red: 50 / 255, green: 172 / 255, blue: 255 / 255)])
     @AppStorage("schoolName") private var name: String = ""
-    @State var school: Data?
-    @State var data: Data?
+    @State var school: String
 
     var body: some View {
         VStack {
+            NavigationView {
+                Text(school)
+            }
 
             // Top Icon
             ZStack {
@@ -31,11 +33,11 @@ struct MainView: View {
             VStack(alignment: .leading) {
                 LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
                     .mask(Text("- 밥").font(.system(size: 26, weight: .bold)))
-                if school != nil {
-                    Text("Response: \(String(data: school!, encoding: .utf8) ?? "")")
-                } else {
-                    Text("Loading...")
-                }
+//                if (data != nil) {
+//                    Text("DATA!")
+//                } else {
+//                    Text("Loading...")
+//                }
             }
                 .frame(width: 300)
 
@@ -112,77 +114,17 @@ struct MainView: View {
                     })
             )
             .onAppear {
-                fetchSchool()
+                MealAPI.getSchool(schoolName: name) {(resp) in
+                    print(resp)
+                    school = resp["SCHUL_NM"].stringValue
+                }
             }
             .navigationBarTitle(name)
     }
-
-    func fetchSchool() {
-        guard var urlComponents = URLComponents(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&key=d374573af8d34cddaf4e4c250b995c8c&SCHUL_NM=경북소프트웨어고등학교") else {
-            print("Invalid URL")
-            return
-        }
-
-        urlComponents.queryItems = [
-            URLQueryItem(name: "Type", value: "json"),
-            URLQueryItem(name: "SCHUL_NM", value: name),
-            URLQueryItem(name: "key", value: "d374573af8d34cddaf4e4c250b995c8c")
-        ]
-
-        guard let url = urlComponents.url else {
-            print("Invalid URL")
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    // Successful response
-
-                    // Process the response data
-                    if let data = data {
-                        school = data
-
-//                        print("Response: \(String(data: data, encoding: .utf8) ?? "")")
-                    }
-                } else {
-                    // Unsuccessful response
-                    print("HTTP Status Code: \(httpResponse.statusCode)")
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-//    func fetchMeal(name: String) {
-//        guard let url = URL(string: "https://api.example.com/data") else { return }
-//
-//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let error = error {
-//                print("Error: \(error.localizedDescription)")
-//                return
-//            }
-//
-//            if let data = data {
-//                DispatchQueue.main.async {
-//                    self.data = data
-//                }
-//            }
-//        }
-//
-//        task.resume()
-//    }
-
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(school: "")
     }
 }

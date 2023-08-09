@@ -51,7 +51,7 @@ struct StartView: View {
                         .presentationDetents([.medium])
                 }
                 .background(
-                    NavigationLink(destination: MainView(), isActive: $isOnDismiss) {
+                    NavigationLink(destination: MainView(school: ""), isActive: $isOnDismiss) {
                         EmptyView()
                     }
 

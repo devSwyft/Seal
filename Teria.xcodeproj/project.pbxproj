@@ -7,24 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		775CA8AE2A83C2BC004FF390 /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CA8AD2A83C2BC004FF390 /* MealModel.swift */; };
 		7774958A2A52DDB100703E95 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777495892A52DDB100703E95 /* StartView.swift */; };
 		7774958C2A52DFA800703E95 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774958B2A52DFA800703E95 /* MainView.swift */; };
 		7774958E2A52E30700703E95 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774958D2A52E30700703E95 /* SelectView.swift */; };
+		778F57BC2A83A4C20039A83F /* MealAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778F57BB2A83A4C20039A83F /* MealAPI.swift */; };
 		779BEA672A527C6B00D44A8D /* TeriaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779BEA662A527C6B00D44A8D /* TeriaApp.swift */; };
 		779BEA692A527C6B00D44A8D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779BEA682A527C6B00D44A8D /* ContentView.swift */; };
 		779BEA6B2A527C6C00D44A8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779BEA6A2A527C6C00D44A8D /* Assets.xcassets */; };
 		779BEA6E2A527C6C00D44A8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779BEA6D2A527C6C00D44A8D /* Preview Assets.xcassets */; };
+		7B6FC8250A2C8838AFC3A094 /* Pods_Teria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1986AFDF92EE6B2D5632E69 /* Pods_Teria.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		775CA8AD2A83C2BC004FF390 /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
 		777495892A52DDB100703E95 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		7774958B2A52DFA800703E95 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7774958D2A52E30700703E95 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		778F57BB2A83A4C20039A83F /* MealAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAPI.swift; sourceTree = "<group>"; };
 		779BEA632A527C6B00D44A8D /* Teria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779BEA662A527C6B00D44A8D /* TeriaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeriaApp.swift; sourceTree = "<group>"; };
 		779BEA682A527C6B00D44A8D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		779BEA6A2A527C6C00D44A8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		779BEA6D2A527C6C00D44A8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D1986AFDF92EE6B2D5632E69 /* Pods_Teria.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teria.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0B05EDDA3E8EC0DCB5D290B /* Pods-Teria.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teria.debug.xcconfig"; path = "Target Support Files/Pods-Teria/Pods-Teria.debug.xcconfig"; sourceTree = "<group>"; };
+		E680F89485848C934AF9EF5F /* Pods-Teria.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teria.release.xcconfig"; path = "Target Support Files/Pods-Teria/Pods-Teria.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,27 +40,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B6FC8250A2C8838AFC3A094 /* Pods_Teria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		777495862A52DD9600703E95 /* Pages */ = {
+		775CA8AC2A83C2A5004FF390 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				775CA8AD2A83C2BC004FF390 /* MealModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		777495862A52DD9600703E95 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				777495892A52DDB100703E95 /* StartView.swift */,
 				7774958B2A52DFA800703E95 /* MainView.swift */,
 				7774958D2A52E30700703E95 /* SelectView.swift */,
 			);
-			path = Pages;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		777495872A52DDA100703E95 /* Components */ = {
+		778F57B92A839EB50039A83F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Components;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		778F57BA2A83A3270039A83F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				778F57BB2A83A4C20039A83F /* MealAPI.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		779BEA5A2A527C6B00D44A8D = {
@@ -60,6 +85,8 @@
 			children = (
 				779BEA652A527C6B00D44A8D /* Teria */,
 				779BEA642A527C6B00D44A8D /* Products */,
+				BAF78432131BA7EF357C47D9 /* Pods */,
+				F34324113A9B49FD8B17D501 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,8 +101,10 @@
 		779BEA652A527C6B00D44A8D /* Teria */ = {
 			isa = PBXGroup;
 			children = (
-				777495872A52DDA100703E95 /* Components */,
-				777495862A52DD9600703E95 /* Pages */,
+				775CA8AC2A83C2A5004FF390 /* Models */,
+				778F57BA2A83A3270039A83F /* Services */,
+				778F57B92A839EB50039A83F /* Resources */,
+				777495862A52DD9600703E95 /* Views */,
 				779BEA662A527C6B00D44A8D /* TeriaApp.swift */,
 				779BEA682A527C6B00D44A8D /* ContentView.swift */,
 				779BEA6A2A527C6C00D44A8D /* Assets.xcassets */,
@@ -92,6 +121,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BAF78432131BA7EF357C47D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E0B05EDDA3E8EC0DCB5D290B /* Pods-Teria.debug.xcconfig */,
+				E680F89485848C934AF9EF5F /* Pods-Teria.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F34324113A9B49FD8B17D501 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1986AFDF92EE6B2D5632E69 /* Pods_Teria.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 779BEA712A527C6C00D44A8D /* Build configuration list for PBXNativeTarget "Teria" */;
 			buildPhases = (
+				F8ACBEBEB7B5FB8B1DEE5B82 /* [CP] Check Pods Manifest.lock */,
 				779BEA5F2A527C6B00D44A8D /* Sources */,
 				779BEA602A527C6B00D44A8D /* Frameworks */,
 				779BEA612A527C6B00D44A8D /* Resources */,
+				A0467DBCB91C92EEAD432ECD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,16 +206,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A0467DBCB91C92EEAD432ECD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Teria/Pods-Teria-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Teria/Pods-Teria-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Teria/Pods-Teria-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8ACBEBEB7B5FB8B1DEE5B82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teria-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		779BEA5F2A527C6B00D44A8D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775CA8AE2A83C2BC004FF390 /* MealModel.swift in Sources */,
 				7774958E2A52E30700703E95 /* SelectView.swift in Sources */,
 				7774958A2A52DDB100703E95 /* StartView.swift in Sources */,
 				7774958C2A52DFA800703E95 /* MainView.swift in Sources */,
 				779BEA692A527C6B00D44A8D /* ContentView.swift in Sources */,
 				779BEA672A527C6B00D44A8D /* TeriaApp.swift in Sources */,
+				778F57BC2A83A4C20039A83F /* MealAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +382,7 @@
 		};
 		779BEA722A527C6C00D44A8D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0B05EDDA3E8EC0DCB5D290B /* Pods-Teria.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,6 +411,7 @@
 		};
 		779BEA732A527C6C00D44A8D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E680F89485848C934AF9EF5F /* Pods-Teria.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
