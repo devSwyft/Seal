@@ -6,12 +6,20 @@ struct MainView: View {
     @State var unselected: Gradient = Gradient(colors: [Color(red: 255 / 255, green: 196 / 255, blue: 190 / 255), Color(red: 50 / 255, green: 172 / 255, blue: 255 / 255)])
     @AppStorage("schoolName") private var name: String = ""
     @State var school: String
+    @State var breakfast: [String]
+    @State var lunch: [String]
+    @State var dinner: [String]
 
     var body: some View {
         VStack {
             NavigationView {
-                Text(school)
+                LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .mask(
+                        Text(school)
+                            .font(.system(size: 20, weight: .bold))
+                    )
             }
+            .frame(height: 25)
 
             // Top Icon
             ZStack {
@@ -23,25 +31,47 @@ struct MainView: View {
                             .frame(width: 120)
                         )
                 }
-                    //                    .edgesIgnoringSafeArea(.all)
-                    .frame(width: 260)
+                                        .edgesIgnoringSafeArea(.all)
+                                        .frame(width: 260, height: 200)
                     .rotationEffect(Angle(degrees: current == 0 ? 0 : (current == 1 ? 90 : 0)))
                     .animation(.easeInOut, value: true)
             }
 
             // Meal Info
-            VStack(alignment: .leading) {
-                LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .mask(Text("- 밥").font(.system(size: 26, weight: .bold)))
-//                if (data != nil) {
-//                    Text("DATA!")
-//                } else {
-//                    Text("Loading...")
-//                }
+            List {
+                if current == 0 {
+                    ForEach(breakfast, id: \.self) { item in
+                        LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                            .mask(
+                                Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                            )
+                    }
+                } else if current == 1 {
+                    ForEach(lunch, id: \.self) { item in
+                        LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                            .mask(
+                                Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                            )
+                    }
+                } else {
+                    ForEach(dinner, id: \.self) { item in
+                        LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                            .mask(
+                                Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                            )
+                    }
+                }
             }
-                .frame(width: 300)
+            .cornerRadius(20)
+            .frame(width: 300, height: 300)
 
-            Spacer(minLength: 300)
+            Spacer(minLength: 100)
 
             // Bottom Menu
             VStack {
@@ -91,32 +121,44 @@ struct MainView: View {
             }
         }
             .padding()
-            .gesture(
-                DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onEnded({ value in
-                        if value.translation.width > 20 {
-                            if current > 0 {
-                                withAnimation {
-                                    current -= 1
-                                }
-                            }
-                        }
-                        if value.translation.width < 20 {
-                            if current < 2 {
-                                withAnimation {
-                                    current += 1
-                                }
-                            }
-                        }
-                        if value.translation.height < 20 {
-                            print("DOWN!!")
-                        }
-                    })
-            )
+//            .gesture(
+//                DragGesture(minimumDistance: 0, coordinateSpace: .local)
+//                    .onEnded({ value in
+//                        if value.translation.width > 20 {
+//                            if current > 0 {
+//                                withAnimation {
+//                                    current -= 1
+//                                }
+//                            }
+//                        }
+//                        if value.translation.width < 20 {
+//                            if current < 2 {
+//                                withAnimation {
+//                                    current += 1
+//                                }
+//                            }
+//                        }
+//                        if value.translation.height < 20 {
+//                            print("DOWN!!")
+//                        }
+//                    })
+//            )
             .onAppear {
                 MealAPI.getSchool(schoolName: name) {(resp) in
-                    print(resp)
-                    school = resp["SCHUL_NM"].stringValue
+                    MealAPI.getMeal(ATPT_OFCDC_SC_CODE: resp["ATPT_OFCDC_SC_CODE"].stringValue, SD_SCHUL_CODE: resp["SD_SCHUL_CODE"].stringValue) {(resp) in
+                        school = resp[0]["SCHUL_NM"].stringValue
+                        
+                        var str: String = resp[0]["DDISH_NM"].stringValue
+                        breakfast = str.split(separator: "<br/>").map({String($0)})
+                        
+                        str = resp[1]["DDISH_NM"].stringValue
+                        lunch = str.split(separator: "<br/>").map({String($0)})
+                        
+                        str = resp[2]["DDISH_NM"].stringValue
+                        dinner = str.split(separator: "<br/>").map({String($0)})
+                        
+                        print(breakfast.split(separator: "<br/>"))
+                    }
                 }
             }
             .navigationBarTitle(name)
@@ -125,6 +167,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(school: "")
+        MainView(school: "", breakfast: [], lunch: [], dinner: [])
     }
 }
