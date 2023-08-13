@@ -22,8 +22,6 @@ struct StartView: View {
                                     .font(.system(size: 30.5, weight: .medium))
                                 Text("급식을 확인하기")
                                     .font(.system(size: 40, weight: .bold))
-                                Text("S c h o o l        M e a l        P r o j e c t")
-                                    .font(.system(size: 15))
                             }
                         )
                         .frame(height: 100)

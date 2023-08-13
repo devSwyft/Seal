@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SelectView: View {
-    @State var name: String = ""
+    @State var name: String = "경북소프트웨어고등학교"
     @State var status: Bool = true
     @Binding var isModal: Bool
 

@@ -11,11 +11,12 @@
 		7774958A2A52DDB100703E95 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777495892A52DDB100703E95 /* StartView.swift */; };
 		7774958C2A52DFA800703E95 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774958B2A52DFA800703E95 /* MainView.swift */; };
 		7774958E2A52E30700703E95 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774958D2A52E30700703E95 /* SelectView.swift */; };
-		778F57BC2A83A4C20039A83F /* MealAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778F57BB2A83A4C20039A83F /* MealAPI.swift */; };
+		778F57BC2A83A4C20039A83F /* MealService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778F57BB2A83A4C20039A83F /* MealService.swift */; };
 		779BEA672A527C6B00D44A8D /* TeriaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779BEA662A527C6B00D44A8D /* TeriaApp.swift */; };
 		779BEA692A527C6B00D44A8D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779BEA682A527C6B00D44A8D /* ContentView.swift */; };
 		779BEA6B2A527C6C00D44A8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779BEA6A2A527C6C00D44A8D /* Assets.xcassets */; };
 		779BEA6E2A527C6C00D44A8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779BEA6D2A527C6C00D44A8D /* Preview Assets.xcassets */; };
+		77B0669A2A88C720006F3E7A /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B066992A88C720006F3E7A /* DateService.swift */; };
 		7B6FC8250A2C8838AFC3A094 /* Pods_Teria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1986AFDF92EE6B2D5632E69 /* Pods_Teria.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,12 +25,13 @@
 		777495892A52DDB100703E95 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		7774958B2A52DFA800703E95 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7774958D2A52E30700703E95 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
-		778F57BB2A83A4C20039A83F /* MealAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAPI.swift; sourceTree = "<group>"; };
+		778F57BB2A83A4C20039A83F /* MealService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealService.swift; sourceTree = "<group>"; };
 		779BEA632A527C6B00D44A8D /* Teria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779BEA662A527C6B00D44A8D /* TeriaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeriaApp.swift; sourceTree = "<group>"; };
 		779BEA682A527C6B00D44A8D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		779BEA6A2A527C6C00D44A8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		779BEA6D2A527C6C00D44A8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		77B066992A88C720006F3E7A /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		D1986AFDF92EE6B2D5632E69 /* Pods_Teria.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teria.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0B05EDDA3E8EC0DCB5D290B /* Pods-Teria.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teria.debug.xcconfig"; path = "Target Support Files/Pods-Teria/Pods-Teria.debug.xcconfig"; sourceTree = "<group>"; };
 		E680F89485848C934AF9EF5F /* Pods-Teria.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teria.release.xcconfig"; path = "Target Support Files/Pods-Teria/Pods-Teria.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,7 +77,8 @@
 		778F57BA2A83A3270039A83F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				778F57BB2A83A4C20039A83F /* MealAPI.swift */,
+				778F57BB2A83A4C20039A83F /* MealService.swift */,
+				77B066992A88C720006F3E7A /* DateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -259,7 +262,8 @@
 				7774958C2A52DFA800703E95 /* MainView.swift in Sources */,
 				779BEA692A527C6B00D44A8D /* ContentView.swift in Sources */,
 				779BEA672A527C6B00D44A8D /* TeriaApp.swift in Sources */,
-				778F57BC2A83A4C20039A83F /* MealAPI.swift in Sources */,
+				77B0669A2A88C720006F3E7A /* DateService.swift in Sources */,
+				778F57BC2A83A4C20039A83F /* MealService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

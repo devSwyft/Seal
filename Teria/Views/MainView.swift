@@ -28,41 +28,69 @@ struct MainView: View {
                     .rotationEffect(Angle(degrees: current == 0 ? 0 : (current == 1 ? 90 : 0)))
                     .animation(.easeInOut, value: true)
             }
-            .padding(EdgeInsets.init(top: -15   , leading: 0, bottom: 5, trailing: 0))
+            .padding(EdgeInsets.init(top: -15, leading: 0, bottom: 5, trailing: 0))
 
+            // Date
+            
+            
             // Meal Info
             List {
                 if current == 0 {
-                    ForEach(breakfast, id: \.self) { item in
+                    if breakfast != [] {
+                        ForEach(breakfast, id: \.self) { item in
+                            LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                                .mask(
+                                    Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                                )
+                        }
+                    } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
                             .mask(
-                                Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                Text("오늘은 아침이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                             )
                     }
                 } else if current == 1 {
-                    ForEach(lunch, id: \.self) { item in
+                    if (lunch != []) {
+                        ForEach(lunch, id: \.self) { item in
+                            LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                                .mask(
+                                    Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                                )
+                        }
+                    } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
                             .mask(
-                                Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                Text("오늘은 점심이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                             )
                     }
                 } else {
-                    ForEach(dinner, id: \.self) { item in
+                    if (dinner != []) {
+                        ForEach(dinner, id: \.self) { item in
+                            LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                                .mask(
+                                    Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
+                                )
+                        }
+                    } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
                             .mask(
-                                Text("\(item.split(separator: " ").map({String($0)})[0])")
+                                Text("오늘은 점심이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                             )
                     }
                 }
             }
             .cornerRadius(20)
             .frame(width: 300, height: 300)
+            .listStyle(PlainListStyle())
 
             Spacer(minLength: 100)
 
@@ -137,8 +165,8 @@ struct MainView: View {
 //                    })
 //            )
             .onAppear {
-                MealAPI.getSchool(schoolName: name) {(resp) in
-                    MealAPI.getMeal(ATPT_OFCDC_SC_CODE: resp["ATPT_OFCDC_SC_CODE"].stringValue, SD_SCHUL_CODE: resp["SD_SCHUL_CODE"].stringValue) {(resp) in
+                MealService.getSchool(schoolName: name) {(resp) in
+                    MealService.getMeal(ATPT_OFCDC_SC_CODE: resp["ATPT_OFCDC_SC_CODE"].stringValue, SD_SCHUL_CODE: resp["SD_SCHUL_CODE"].stringValue) {(resp) in
                         school = resp[0]["SCHUL_NM"].stringValue
                         
                         var str: String = resp[0]["DDISH_NM"].stringValue
