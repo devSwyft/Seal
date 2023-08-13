@@ -17,10 +17,11 @@ struct StartView: View {
                 LinearGradient(gradient: Gradient(colors: [Color(red: 255 / 255, green: 146 / 255, blue: 140 / 255), Color(red: 10 / 255, green: 132 / 255, blue: 255 / 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .mask(
                         VStack(alignment: .leading) {
-                            Text("iOS에서 급식을 확인하는")
-                                .font(.system(size: 22.5, weight: .medium))
-                            Text("가장 쉬운 방법")
+                            Text("iOS에서 쉽고 빠르게")
+                                .font(.system(size: 30.5, weight: .medium))
+                            Text("급식을 확인해요")
                                 .font(.system(size: 40, weight: .bold))
+                            Text("S c h o o l     M e a l      P r o j e c t")
                         }
                     )
                     .frame(height: 100)

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SelectView: View {
     @State var name: String = ""
-    @State var status: Bool = false
+    @State var status: Bool = true
     @Binding var isModal: Bool
 
     var body: some View {
@@ -10,7 +10,7 @@ struct SelectView: View {
             VStack(alignment: .leading) {
                 LinearGradient(gradient: Gradient(colors: [Color(red: 255 / 255, green: 136 / 255, blue: 130 / 255), Color(red: 0 / 255, green: 122 / 255, blue: 255 / 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .mask(
-                        Text("학교명만 입력하면 끝이에요.")
+                        Text("학교명을 입력하여 확인해요.")
                             .font(.system(size: 22, weight: .medium)
                             ))
                     .frame(height: 150)
@@ -27,7 +27,7 @@ struct SelectView: View {
                     .background(Color(red: 250 / 255, green: 250 / 255, blue: 250 / 255))
                     .cornerRadius(16)
 
-                Text(status ? "학교명을 입력해주세요." : "")
+                Text(!status ? "학교명을 입력해주세요." : "")
                     .foregroundColor(Color.red)
                     .font(.system(size: 15))
 
@@ -42,12 +42,12 @@ struct SelectView: View {
                             UserDefaults.standard.set("", forKey: "schoolName")
                             UserDefaults.standard.synchronize()
 
-                            status = true
+                            status = false
                         } else {
                             UserDefaults.standard.set(name, forKey: "schoolName")
                             UserDefaults.standard.synchronize()
 
-                            status = false
+                            status = true
                             isModal = false
                         }
                     } label: {

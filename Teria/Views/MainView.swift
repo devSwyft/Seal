@@ -12,15 +12,7 @@ struct MainView: View {
 
     var body: some View {
         VStack {
-            NavigationView {
-                LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .mask(
-                        Text(school)
-                            .font(.system(size: 20, weight: .bold))
-                    )
-            }
-            .frame(height: 25)
-
+            
             // Top Icon
             ZStack {
                 VStack {
@@ -36,6 +28,7 @@ struct MainView: View {
                     .rotationEffect(Angle(degrees: current == 0 ? 0 : (current == 1 ? 90 : 0)))
                     .animation(.easeInOut, value: true)
             }
+            .padding(EdgeInsets.init(top: -15   , leading: 0, bottom: 5, trailing: 0))
 
             // Meal Info
             List {
@@ -161,7 +154,7 @@ struct MainView: View {
                     }
                 }
             }
-            .navigationBarTitle(name)
+            .navigationBarTitle(school)
     }
 }
 
