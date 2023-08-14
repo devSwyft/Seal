@@ -44,6 +44,10 @@ struct MainView: View {
                                         .font(.system(size: 20, weight: .bold))
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
+                                .listRowSeparator(.hidden)
+                                .padding(5)
+                                .cornerRadius(20)
+                                .shadow(radius: 20)
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -51,6 +55,10 @@ struct MainView: View {
                                 Text("오늘은 아침이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
                             )
+                            .listRowSeparator(.hidden)
+                            .padding(5)
+                            .background(Color.white)
+                            .cornerRadius(10)
                     }
                 } else if current == 1 {
                     if (lunch != []) {
@@ -61,6 +69,7 @@ struct MainView: View {
                                         .font(.system(size: 20, weight: .bold))
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
+                                .listRowSeparator(.hidden)
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -68,6 +77,7 @@ struct MainView: View {
                                 Text("오늘은 점심이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
                             )
+                            .listRowSeparator(.hidden)
                     }
                 } else {
                     if (dinner != []) {
@@ -78,13 +88,15 @@ struct MainView: View {
                                         .font(.system(size: 20, weight: .bold))
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
+                                .listRowSeparator(.hidden)
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
                             .mask(
-                                Text("오늘은 점심이 없는 것 같아요.")
+                                Text("오늘은 저녁이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
                             )
+                            .listRowSeparator(.hidden)
                     }
                 }
             }
