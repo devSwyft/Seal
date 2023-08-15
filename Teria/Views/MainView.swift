@@ -11,7 +11,7 @@ struct MainView: View {
     @State var dinner: [String]
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0.0) {
             
             // Top Icon
             ZStack {
@@ -24,11 +24,11 @@ struct MainView: View {
                         )
                 }
                                         .edgesIgnoringSafeArea(.all)
-                                        .frame(width: 260, height: 200)
+                                        .frame(width: 260, height: 150)
                     .rotationEffect(Angle(degrees: current == 0 ? 0 : (current == 1 ? 90 : 0)))
                     .animation(.easeInOut, value: true)
             }
-            .padding(EdgeInsets.init(top: -15, leading: 0, bottom: 5, trailing: 0))
+            .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
 
             // Date
             
@@ -44,10 +44,9 @@ struct MainView: View {
                                         .font(.system(size: 20, weight: .bold))
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
-                                .listRowSeparator(.hidden)
-                                .padding(5)
+//                                .listRowSeparator(.hidden)
+                                .padding()
                                 .cornerRadius(20)
-                                .shadow(radius: 20)
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -55,9 +54,8 @@ struct MainView: View {
                                 Text("오늘은 아침이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
                             )
-                            .listRowSeparator(.hidden)
-                            .padding(5)
-                            .background(Color.white)
+//                            .listRowSeparator(.hidden)
+                            .padding()
                             .cornerRadius(10)
                     }
                 } else if current == 1 {
@@ -69,7 +67,8 @@ struct MainView: View {
                                         .font(.system(size: 20, weight: .bold))
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
-                                .listRowSeparator(.hidden)
+                                .padding()
+//                                .listRowSeparator(.hidden)
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -77,7 +76,8 @@ struct MainView: View {
                                 Text("오늘은 점심이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
                             )
-                            .listRowSeparator(.hidden)
+                            .padding()
+//                            .listRowSeparator(.hidden)
                     }
                 } else {
                     if (dinner != []) {
@@ -88,7 +88,8 @@ struct MainView: View {
                                         .font(.system(size: 20, weight: .bold))
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
-                                .listRowSeparator(.hidden)
+                                .padding()
+//                                .listRowSeparator(.hidden)
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -96,7 +97,8 @@ struct MainView: View {
                                 Text("오늘은 저녁이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
                             )
-                            .listRowSeparator(.hidden)
+                            .padding()
+//                            .listRowSeparator(.hidden)
                     }
                 }
             }
@@ -104,7 +106,7 @@ struct MainView: View {
             .frame(width: 300, height: 300)
             .listStyle(PlainListStyle())
 
-            Spacer(minLength: 100)
+            Spacer()
 
             // Bottom Menu
             VStack {
@@ -194,7 +196,7 @@ struct MainView: View {
                     }
                 }
             }
-            .navigationBarTitle(school)
+            .navigationBarTitle(school != "" ? school : name)
     }
 }
 

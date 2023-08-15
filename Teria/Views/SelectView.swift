@@ -33,7 +33,7 @@ struct SelectView: View {
 
                 Spacer()
             }
-                .frame(width: 250)
+            .frame(width: 250)
 
             LinearGradient(gradient: Gradient(colors: [Color(red: 255 / 255, green: 146 / 255, blue: 140 / 255), Color(red: 10 / 255, green: 132 / 255, blue: 255 / 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .overlay(
@@ -54,11 +54,11 @@ struct SelectView: View {
                         Text("확인")
                             .font(.system(size: 22, weight: .black))
                             .foregroundColor(Color.white)
-                            .frame(width: 400)
                     }
                 )
-                .frame(height: 80)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: -35, trailing: 0))
+                .frame(width: 360, height: 70)
+                .cornerRadius(20)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
         }
     }
 }

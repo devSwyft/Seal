@@ -27,7 +27,7 @@ struct StartView: View {
                         .frame(height: 100)
                 }
                 
-                Spacer()
+                Spacer(minLength: 200)
 
                 LinearGradient(gradient: Gradient(colors: [Color(red: 255 / 255, green: 146 / 255, blue: 140 / 255), Color(red: 10 / 255, green: 132 / 255, blue: 255 / 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .overlay(
@@ -36,12 +36,13 @@ struct StartView: View {
                         } label: {
                             Text("시작하기")
                                 .font(.system(size: 22, weight: .black))
-                                .frame(width: 400)
+                                .frame(width: 100)
                                 .foregroundColor(Color.white)
                         }
                     )
-                    .frame(height: 80)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: -35, trailing: 0))
+                    .frame(width: 360, height: 70)
+                    .cornerRadius(20)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             }
                 .sheet(isPresented: $isModal, onDismiss: {
                     if name != "" {
