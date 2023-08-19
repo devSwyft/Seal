@@ -54,10 +54,9 @@ struct StartView: View {
                         .presentationDetents([.medium])
                 }
                 .background(
-                    NavigationLink(destination: MainView(school: "", breakfast: [], lunch: [], dinner: []), isActive: $isOnDismiss) {
+                    NavigationLink(destination: MainView(school: "", breakfast: [], lunch: [], dinner: [], dateAdd: 0), isActive: $isOnDismiss) {
                         EmptyView()
                     }
-
                 )
                 .onAppear {
                     UserDefaults.standard.set("", forKey: "schoolName")
@@ -66,7 +65,6 @@ struct StartView: View {
         }
     }
 }
-
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {

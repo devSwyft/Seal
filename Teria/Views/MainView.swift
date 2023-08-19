@@ -9,9 +9,81 @@ struct MainView: View {
     @State var breakfast: [String]
     @State var lunch: [String]
     @State var dinner: [String]
+    @State var dateAdd: Int
 
     var body: some View {
-        VStack(spacing: 0.0) {
+        VStack() {
+            
+            // Date Controller
+            VStack(alignment: .center) {
+                HStack {
+                    Button (
+                        action: { dateAdd -= 1
+                            MealService.getSchool(schoolName: name) {resp in
+                                MealService.getMeal(ATPT_OFCDC_SC_CODE: resp["ATPT_OFCDC_SC_CODE"].stringValue, SD_SCHUL_CODE: resp["SD_SCHUL_CODE"].stringValue, dateAdd: dateAdd) {resp in
+                                    school = resp[0]["SCHUL_NM"].stringValue
+                                    
+                                    var str: String = resp[0]["DDISH_NM"].stringValue
+                                    breakfast = str.split(separator: "<br/>").map({String($0)})
+                                    
+                                    str = resp[1]["DDISH_NM"].stringValue
+                                    lunch = str.split(separator: "<br/>").map({String($0)})
+                                    
+                                    str = resp[2]["DDISH_NM"].stringValue
+                                    dinner = str.split(separator: "<br/>").map({String($0)})
+                                    
+                                    print(breakfast.split(separator: "<br/>"))
+                                }
+                            }
+                        }
+                    ) {
+                        HStack {
+                            LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                                .mask(
+                                    Image(systemName: "chevron.left")
+                                )
+                                .frame(width: 20)
+                        }
+                        .frame(height: 50)
+                    }
+                    
+                    // Selected Date
+                    LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .mask(Text(DateService.getDateView(add: dateAdd)).font(.system(size: 20)).bold())
+                        .frame(width: 120)
+                    
+                    Button (
+                        action: { dateAdd += 1
+                            MealService.getSchool(schoolName: name) {resp in
+                                MealService.getMeal(ATPT_OFCDC_SC_CODE: resp["ATPT_OFCDC_SC_CODE"].stringValue, SD_SCHUL_CODE: resp["SD_SCHUL_CODE"].stringValue, dateAdd: dateAdd) {resp in
+                                    school = resp[0]["SCHUL_NM"].stringValue
+                                    
+                                    var str: String = resp[0]["DDISH_NM"].stringValue
+                                    breakfast = str.split(separator: "<br/>").map({String($0)})
+                                    
+                                    str = resp[1]["DDISH_NM"].stringValue
+                                    lunch = str.split(separator: "<br/>").map({String($0)})
+                                    
+                                    str = resp[2]["DDISH_NM"].stringValue
+                                    dinner = str.split(separator: "<br/>").map({String($0)})
+                                    
+                                    print(breakfast.split(separator: "<br/>"))
+                                }
+                            }
+                        }
+                    ) {
+                        HStack {
+                            LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
+                                .mask(
+                                    Image(systemName: "chevron.right")
+                                )
+                                .frame(width: 20)
+                        }
+                        .frame(height: 50)
+                    }
+                }
+                .frame(height: 50)
+            }
             
             // Top Icon
             ZStack {
@@ -28,10 +100,7 @@ struct MainView: View {
                     .rotationEffect(Angle(degrees: current == 0 ? 0 : (current == 1 ? 90 : 0)))
                     .animation(.easeInOut, value: true)
             }
-            .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
-
-            // Date
-            
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
             // Meal Info
             List {
@@ -44,7 +113,6 @@ struct MainView: View {
                                         .font(.system(size: 20, weight: .bold))
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
-//                                .listRowSeparator(.hidden)
                                 .padding()
                                 .cornerRadius(20)
                         }
@@ -54,7 +122,6 @@ struct MainView: View {
                                 Text("오늘은 아침이 없는 것 같아요.")
                                     .font(.system(size: 20, weight: .bold))
                             )
-//                            .listRowSeparator(.hidden)
                             .padding()
                             .cornerRadius(10)
                     }
@@ -68,7 +135,7 @@ struct MainView: View {
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
                                 .padding()
-//                                .listRowSeparator(.hidden)
+
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -77,7 +144,6 @@ struct MainView: View {
                                     .font(.system(size: 20, weight: .bold))
                             )
                             .padding()
-//                            .listRowSeparator(.hidden)
                     }
                 } else {
                     if (dinner != []) {
@@ -89,7 +155,6 @@ struct MainView: View {
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 0))
                                 )
                                 .padding()
-//                                .listRowSeparator(.hidden)
                         }
                     } else {
                         LinearGradient(gradient: selected, startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -98,7 +163,6 @@ struct MainView: View {
                                     .font(.system(size: 20, weight: .bold))
                             )
                             .padding()
-//                            .listRowSeparator(.hidden)
                     }
                 }
             }
@@ -156,31 +220,9 @@ struct MainView: View {
             }
         }
             .padding()
-//            .gesture(
-//                DragGesture(minimumDistance: 0, coordinateSpace: .local)
-//                    .onEnded({ value in
-//                        if value.translation.width > 20 {
-//                            if current > 0 {
-//                                withAnimation {
-//                                    current -= 1
-//                                }
-//                            }
-//                        }
-//                        if value.translation.width < 20 {
-//                            if current < 2 {
-//                                withAnimation {
-//                                    current += 1
-//                                }
-//                            }
-//                        }
-//                        if value.translation.height < 20 {
-//                            print("DOWN!!")
-//                        }
-//                    })
-//            )
             .onAppear {
-                MealService.getSchool(schoolName: name) {(resp) in
-                    MealService.getMeal(ATPT_OFCDC_SC_CODE: resp["ATPT_OFCDC_SC_CODE"].stringValue, SD_SCHUL_CODE: resp["SD_SCHUL_CODE"].stringValue) {(resp) in
+                MealService.getSchool(schoolName: name) {resp in
+                    MealService.getMeal(ATPT_OFCDC_SC_CODE: resp["ATPT_OFCDC_SC_CODE"].stringValue, SD_SCHUL_CODE: resp["SD_SCHUL_CODE"].stringValue, dateAdd: dateAdd) {resp in
                         school = resp[0]["SCHUL_NM"].stringValue
                         
                         var str: String = resp[0]["DDISH_NM"].stringValue
@@ -202,6 +244,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(school: "", breakfast: [], lunch: [], dinner: [])
+        MainView(school: "", breakfast: [], lunch: [], dinner: [], dateAdd: 0)
     }
 }

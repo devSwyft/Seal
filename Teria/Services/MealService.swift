@@ -27,9 +27,8 @@ struct MealService {
       }
     }
     
-    static func getMeal(ATPT_OFCDC_SC_CODE: String, SD_SCHUL_CODE: String, completion: @escaping (JSON) -> ()) {
-        let date = DateService.getToday()
-        let url = "https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&key=d374573af8d34cddaf4e4c250b995c8c&ATPT_OFCDC_SC_CODE=\(ATPT_OFCDC_SC_CODE)&SD_SCHUL_CODE=\(SD_SCHUL_CODE)&MLSV_YMD=\(date)"
+    static func getMeal(ATPT_OFCDC_SC_CODE: String, SD_SCHUL_CODE: String, dateAdd: Int, completion: @escaping (JSON) -> ()) {
+        let url = "https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&key=d374573af8d34cddaf4e4c250b995c8c&ATPT_OFCDC_SC_CODE=\(ATPT_OFCDC_SC_CODE)&SD_SCHUL_CODE=\(SD_SCHUL_CODE)&MLSV_YMD=\(DateService.getDate(add: dateAdd))"
 
         AF.request(url,
                    method: .get,
