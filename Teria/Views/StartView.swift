@@ -11,7 +11,7 @@ struct StartView: View {
                 Spacer()
 
                 VStack(alignment: .center) {
-                    Text("👋")
+                    Text("🤩")
                         .font(.system(size: 100))
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: -10, trailing: 0))
 
